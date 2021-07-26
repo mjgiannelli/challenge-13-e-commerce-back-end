@@ -76,7 +76,6 @@ router.post('/', (req, res) => {
     category_id: req.body.category_id,
     tagIds: req.body.tagIds
   })
-  Product.create(req.body)
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
       if (req.body.tagIds.length) {
@@ -102,6 +101,7 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   // update product data
   Product.update(req.body, {
+    individualHooks: true,
     where: {
       id: req.params.id,
     },

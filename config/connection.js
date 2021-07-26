@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+// connect to the mysql database using sequelize and env variables to block pw
 const Sequelize = require('sequelize');
 
 const sequelize = process.env.JAWSDB_URL
